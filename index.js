@@ -42,7 +42,7 @@ app.get('/callback', async (req, res) => {
 
         const { access_token, refresh_token } = response.data;
 
-        // Save tokens in memory or database (for simplicity, let's use variables here)
+        // Save tokens in memory or database 
         req.session.access_token = access_token;
         req.session.refresh_token = refresh_token;
 
