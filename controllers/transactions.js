@@ -2,10 +2,9 @@ import express from 'express';
 const router = express.Router();
 import { mongoose } from "../db.js";
 
-import Transaction from '../model/Transaction.js';
+import Transaction from '../model/transaction.js';
 
 router.get('/', async (req, res) => {
-    
     try{
         const transactions = await Transaction.find();
         res.json(transactions);
@@ -14,11 +13,32 @@ router.get('/', async (req, res) => {
 }
 });
 
+router.get('/user/userId', async (req,res) =>{
+    const userId = req.params.userId
+
+  if(!mongoose.Types.ObjectId.isValid(userId)){
+    res.status(400).send("Invalid user ID")
+  }
+
+  try{
+    const userTransactions = await Transaction.find({ createdBy: userId})
+    
+    if (userTransactions.length ===0){
+      res.status(404).send("no transactions found for this user")
+    }
+
+    return res.json(userTransactions)
+  } catch (err){
+    console.error(err)
+    res.status(500).send("server error")
+  }
+})
+
 router.post('/', async (req,res) => {
     try{
         const transaction = new Transaction(req.body);
         await transaction.save();
-        res.status(201).json(transaction);
+        res.send(`added ${req.body.category}`);
     } catch (error){
         res.status(500).json({message: 'Error saving transaction', error});
     }

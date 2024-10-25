@@ -9,7 +9,9 @@ console.log(process.env.ANYTHING)
 
 app.use(express.json())
 
+import router from "./controllers/users.js"
 import transactionsRouter from "./controllers/transactions.js"
+app.use('/auth', router)
 app.use("/transactions", transactionsRouter)
 
 
