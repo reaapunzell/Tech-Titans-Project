@@ -14,6 +14,9 @@ const clientSecret = process.env.CLIENT_SECRET;
 const redirectUri = process.env.REDIRECT_URI;
 const tokenUrl = 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer';
 
+app.get("/", (req, res) => {
+    res.send ("hello world");
+})
 // Redirect to QuickBooks for authorization
 app.get('/authorize', (req, res) => {
     const authUri = `https://appcenter.intuit.com/connect/oauth2?client_id=${clientId}&scope=com.intuit.quickbooks.accounting&redirect_uri=${redirectUri}&response_type=code&state=someRandomState`;
