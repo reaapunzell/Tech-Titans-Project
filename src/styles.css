@@ -1,0 +1,203 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa;
+    margin: 0;
+    padding: 20px;
+    background-image: url(images/pexels-cottonbro-3943716.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media (max-width: 600px) {
+    p {
+        font-size: 14px;      
+    }
+}
+
+/* HOME SCREEN STYLING */
+
+#home-screen p {
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #131212;
+    line-height: 1.6;
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;      
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+#home-screen h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
+
+#home-screen .container {
+    max-width: 400px;
+    margin: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #00796b; 
+}
+
+#home-screen .form-container {
+    margin-bottom: 20px;
+}
+
+#home-screen .input-container{
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 10px 0;
+}
+
+
+#home-screen .input-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #035248;
+
+}
+
+#home-screen input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#home-screen button {
+    width: 100%;
+    padding: 10px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+#home-screen button:hover {
+    background-color: #004d40; 
+    transform: translateY(-2px);
+}
+
+#home-screen button:active {
+    transform: translateY(0); 
+}
+
+#home-screen .forgot-password{
+    text-align: center;
+    margin-top: 10px;
+}
+
+#home-screen .forgot-password a{
+    color:#00796b;
+    text-decoration: none;
+}
+
+#home-screen .forgot-password a:hover{
+    text-decoration: underline;
+}
+
+#home-screen .money-icon {
+    font-size: 30px;
+    color: #28a745;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+#home-screen .money-icon:hover {
+    transform: scale(1.2);
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 0); }
+    25% { transform: translate(-1px, 0); }
+    50% { transform: translate(1px, 0); }
+    75% { transform: translate(-1px, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+#home-screen .shake {
+    animation: shake 0.5s;
+}
+
+#home-screen .form-container{
+    margin-bottom: 20px;
+}
+
+/* CASH FLOW STYLING */
+
+#cash-flow .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#cash-flow header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#cash-flow  h1 {
+    color: #007bff;
+}
+
+#cash-flow canvas {
+    max-width: 100%;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+}
+
+#cash-flow form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+#cash-flow input {
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    width: calc(50% - 10px);
+}
+
+#cash-flow button {
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1;
+}
+
+#cash-flow button:hover {
+    background-color: #0056b3;
+}
+
+#cash-flow #summary {
+    margin-top: 20px;
+    text-align: left;
+}
+
+#cash-flow #summary p {
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
