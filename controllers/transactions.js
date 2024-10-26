@@ -1,6 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import { mongoose } from "../db.js";
+import tokenValidation from "../middlewares/tokenValidation.js"
 
 import Transaction from '../model/transaction.js';
 
@@ -13,7 +14,7 @@ router.get('/', async (req, res) => {
 }
 });
 
-router.get('/user/userId', async (req,res) =>{
+router.get('/user/userId', tokenValidation, async (req,res) =>{
     const userId = req.params.userId
 
   if(!mongoose.Types.ObjectId.isValid(userId)){
@@ -34,9 +35,11 @@ router.get('/user/userId', async (req,res) =>{
   }
 })
 
-router.post('/', async (req,res) => {
+router.post('/', tokenValidation, async (req,res) => {
     try{
-        const transaction = new Transaction(req.body);
+        const transaction = new Transaction({
+          ...req.body,
+        createdBy: req.user._id});
         await transaction.save();
         res.send(`added ${req.body.category}`);
     } catch (error){
