@@ -15,7 +15,7 @@ function Register() {
         try {
             const response = await api.post('/auth/register', form);
             if (response.status === 200) {
-                alert('Registration successful!');
+                alert('Registration successful!' + response.data);
             } else {
                 alert('Registration failed: ' + response.data.message);
             }

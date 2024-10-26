@@ -17,6 +17,11 @@ const Transaction = new mongoose.Schema({
       type: String,
       enum: ['income', 'expense'],
       required:true
+    },
+    createdBy: {
+        type:mongoose.Schema.ObjectId,
+        required: true,
+        ref: "user",
     }
 });
 export default mongoose.model("Transaction", Transaction)
