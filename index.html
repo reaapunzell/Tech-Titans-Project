@@ -1,1 +1,300 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cash Flow Forecasting App</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --accent-color: #3b82f6;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+}
+
+.navbar {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+}
+
+.status-pending {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.status-paid {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.status-overdue {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.fade-in {
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+</style>
+</head>
+<body>
+    <!-- Navigation -->
+<nav class="navbar px-6 py-4 shadow-lg">
+<div class="container mx-auto flex justify-between items-center">
+<a href="index.html" class="text-white text-2xl font-bold">
+<i class="fas fa-chart-line mr-2"></i>
+CashFlow Pro
+            </a>
+            <div class="space-x-6">
+                <a href="index.html" class="text-white hover:text-blue-200">Home</a>
+                <a href="login.html" class="text-white hover:text-blue-200">Login</a>
+                <a href="invoices.html" class="text-white hover:text-blue-200">Invoices</a>
+                <a href="forecast.html" class="text-white hover:text-blue-200">Forecast</a>
+                <a href="clients.html" class="text-white hover:text-blue-200">Clients</a>
+                <a href="settings.html" class="text-white hover:text-blue-200">Settings</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8 fade-in">
+        <h1 class="text-3xl font-bold mb-6">Welcome to Your Financial Dashboard</h1>
+        <p class="text-gray-700 mb-8">Analyze your historical financial data and manage your cash flow effectively.</p>
+
+        <!-- Core Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Invoices Summary -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">Invoices Summary</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="card bg-white p-4 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-2">Total Paid</h3>
+                        <p class="text-3xl font-bold text-success-color">$30,000</p>
+                    </div>
+                    <div class="card bg-white p-4 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-2">Pending Invoices</h3>
+                        <p class="text-3xl font-bold text-warning-color">$5,000</p>
+                    </div>
+                    <div class="card bg-white p-4 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-2">Overdue</h3>
+                        <p class="text-3xl font-bold text-danger-color">$2,000</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forecast Overview -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">Forecast Overview</h2>
+                <div class="overflow-x-auto">
+                    <canvas id="cashFlowChart" class="h-64"></canvas>
+                </div>
+                <p class="text-gray-700 mt-4">Next Month’s Cash Status: <span class="font-bold">$15,000</span></p>
+            </div>
+            
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                const ctx = document.getElementById('cashFlowChart').getContext('2d');
+                const cashFlowChart = new Chart(ctx, {
+                    type: 'bar', // Change to 'line' or other types as needed
+                    data: {
+                        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'], // Your x-axis labels
+                        datasets: [{
+                            label: 'Cash Flow',
+                            data: [12000, 15000, 8000, 20000], // Your data points
+                            backgroundColor: 'rgba(37, 99, 235, 0.5)', // Customize as needed
+                            borderColor: 'rgba(37, 99, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+            
+
+        <!-- Clients Overview -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Clients Overview</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="px-6 py-3 text-left">Client Name</th>
+                            <th class="px-6 py-3 text-left">Outstanding Invoices</th>
+                            <th class="px-6 py-3 text-left">Recent Invoices</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="px-6 py-4">Client A</td>
+                            <td class="px-6 py-4">$1,200</td>
+                            <td class="px-6 py-4">$500</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-6 py-4">Client B</td>
+                            <td class="px-6 py-4">$2,500</td>
+                            <td class="px-6 py-4">$1,000</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-6 py-4">Client C</td>
+                            <td class="px-6 py-4">$3,000</td>
+                            <td class="px-6 py-4">$1,500</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-6 py-4">Client D</td>
+                            <td class="px-6 py-4">$800</td>
+                            <td class="px-6 py-4">$300</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-6 py-4">Client E</td>
+                            <td class="px-6 py-4">$1,500</td>
+                            <td class="px-6 py-4">$700</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4 flex space-x-4">
+                <button class="btn-primary flex items-center justify-center" id="addClientBtn">
+                    <i class="fas fa-user-plus mr-2"></i>
+                    Add New Client
+                </button>
+                <button class="btn-primary flex items-center justify-center" id="viewAllClientsBtn">
+                    <i class="fas fa-users mr-2"></i>
+                    View All Clients
+                </button>
+            </div>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                <div class="space-y-4">
+                    <button class="btn-primary w-full flex items-center justify-center" id="createInvoiceBtn">
+                        <i class="fas fa-plus mr-2"></i>
+                        Create New Invoice
+                    </button>
+                    <button class="btn-primary w-full flex items-center justify-center" id="generateReportBtn">
+                        <i class="fas fa-chart-bar mr-2"></i>
+                        Generate Forecast Report
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            // Add New Invoice button functionality
+            document.getElementById('createInvoiceBtn').addEventListener('click', function() {
+                alert('Create New Invoice functionality coming soon!');
+                // window.location.href = 'create-invoice.html'; // Example redirect
+            });
+        
+            // Generate Forecast Report button functionality
+            document.getElementById('generateReportBtn').addEventListener('click', function() {
+                alert('Generate Forecast Report functionality coming soon!');
+                // window.location.href = 'report.html'; // Example redirect
+            });
+        </script>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                <ul class="text-gray-400">
+                    <!-- <li><a href="index.html" class="hover:text-white">Home</a></li> -->
+                    <a href="login.html" class="hover:text-white">Login</a></li>
+                    <li><a href="invoices.html" class="hover:text-white">Invoices</a></li>
+                    <li><a href="forecast.html" class="hover:text-white">Forecast</a></li>
+                    <li><a href="clients.html" class="hover:text-white">Clients</a></li>
+                    <li><a href="settings.html" class="hover:text-white">Settings</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Contact Us</h4>
+                <p class="text-gray-400">
+                    Email: support@cashflowpro.com<br>
+                    Phone: +1 234 567 890
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('createInvoiceBtn').addEventListener('click', function() {
+        alert('Create New Invoice functionality coming soon!');
+    });
+
+    document.getElementById('addClientBtn').addEventListener('click', function() {
+        alert('Add New Client functionality coming soon!');
+    });
+
+    document.getElementById('viewAllClientsBtn').addEventListener('click', function() {
+        alert('View All Clients functionality coming soon!');
+    });
+
+    document.getElementById('generateReportBtn').addEventListener('click', function() {
+        alert('Generate Report functionality coming soon!');
+    });
+
+    document.querySelector('.fa-user-circle').addEventListener('click', function() {
+        document.getElementById('profileMenu').classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>
+        

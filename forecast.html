@@ -1,0 +1,331 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinFlow - Cash Flow Forecast</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">FinFlow</div>
+            <div class="nav-links">
+                <a href="index.html">Dashboard</a>
+                <a href="invoices.html">Invoices</a>
+                <a href="forecast.html">Forecast</a>
+                <a href="clients.html">Clients</a>
+                <a href="settings.html">Settings</a>
+                <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="card">
+            <h2>Cash Flow Forecast</h2>
+            <div class="chart-container" style="height: 400px;">
+                <canvas id="forecastChart"></canvas>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Expected Income</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>November 2024</td>
+                            <td>$5,000</td>
+                            <td><span class="status status-pending">Projected</span></td>
+                        </tr>
+                        <tr>
+                            <td>December 2024</td>
+                            <td>$7,500</td>
+                            <td><span class="status status-pending">Projected</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>Expected Expenses</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Amount</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>November 2024</td>
+                            <td>$3,000</td>
+                            <td>Operating Expenses</td>
+                        </tr>
+                        <tr>
+                            <td>December 2024</td>
+                            <td>$4,000</td>
+                            <td>Operating Expenses</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/scripts.js"></script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Flow Forecast</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <h1>Cash Flow Forecast</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Accurate Cash Flow Projections</h2>
+            <p>Based on your historical financial data, we provide **real-time cash flow projections** to help you anticipate potential cash shortages and make informed financial decisions.</p>
+
+            <div class="forecast-graph">
+                <img src="images/forecast-chart.png" alt="Cash Flow Chart (Placeholder)" />
+            </div>
+        </section>
+    </main>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html >
+<html lang= "en ">
+<head >
+<meta charset= "UTF-8 ">
+<meta name= "viewport " content= "width=device-width, initial-scale=1.0 ">
+<link rel= "stylesheet " href= "css/styles.css ">
+<title >Cash Flow Forecasting </title >
+ </head >
+<body >
+
+<header ><h1 >Cash Flow Forecasting Tool </h1 ></header >
+
+<nav >< a href= "index.html ">Home </ a >< a href= "invoices.html ">Invoices </ a >< a href= "forecast.html ">Forecast </ a >< a href= "clients.html ">Clients </ a >< a href= "login.html ">Login </ a ></nav >
+
+<div class= "container ">
+<h2>Your Cash Flow Forecasts:</h2 >
+
+<p>This section will display your cash flow forecasts based on historical data.</p>
+
+<div id="forecastChart" style="height:300px; background-color:#e9ecef; text-align:center; padding-top:100px;">
+   Chart will be displayed here.
+   </div>
+
+<button onclick="generateForecast()">Generate Forecast Report!</button >
+
+<footer ><p >&copy; 2024 Cash Flow Forecasting App </p ></footer >
+
+<script src= "js/scripts.js "></script >
+
+ </body >
+ </html > -->
+
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Flow Forecasting App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+
+        .card {
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        .status-pending {
+            background-color: var(--warning-color);
+            color: white;
+        }
+
+        .status-paid {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .status-overdue {
+            background-color: var(--danger-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar px-6 py-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-white text-2xl font-bold">
+                <i class="fas fa-chart-line mr-2"></i>
+                CashFlow Pro
+            </a>
+            <div class="space-x-6">
+                <a href="index.html" class="text-white hover:text-blue-200">Home</a>
+                <a href="login.html" class="text-white hover:text-blue-200">Login</a>
+                <a href="invoices.html" class="text-white hover:text-blue-200">Invoices</a>
+                <a href="forecast.html" class="text-white hover:text-blue-200">Forecast</a>
+                <a href="clients.html" class="text-white hover:text-blue-200">Clients</a>
+                <a href="settings.html" class="text-white hover:text-blue-200">Settings</a>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">Cash Flow Forecasting Tool</h1>
+        <p class="text-gray-700 mb-8">Use our tool to forecast your cash flow based on historical data and make informed financial decisions.</p>
+
+        <!-- Forecast Overview -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="card bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Current Month Forecast</h3>
+                <p class="text-3xl font-bold text-primary-color">$15,000</p>
+                <p class="text-gray-600 mt-2">Expected revenue</p>
+            </div>
+            <div class="card bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Next Month Forecast</h3>
+                <p class="text-3xl font-bold text-success-color">$18,500</p>
+                <p class="text-gray-600 mt-2">Projected growth</p>
+            </div>
+            <div class="card bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Quarterly Forecast</h3>
+                <p class="text-3xl font-bold text-warning-color">$50,000</p>
+                <p class="text-gray-600 mt-2">Total expected revenue</p>
+            </div>
+        </div>
+
+        <!-- Forecast Chart -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Your Cash Flow Forecasts</h2>
+            <p class="text-gray-700 mb-4">This section will display your cash flow forecasts based on historical data.</p>
+            <div class="overflow-x-auto">
+                <!-- Placeholder for chart -->
+                <div class="h-64 bg-gray-100 flex items-center justify-center">
+                    <p class="text-gray-500">Chart will be displayed here.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generate Forecast Report -->
+        <div class="flex justify-center">
+            <button class="btn-primary flex items-center justify-center">
+                <i class="fas fa-file-alt mr-2"></i>
+                Generate Forecast Report
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">About CashFlow Pro</h4>
+                    <p class="text-gray-400">
+                        Empowering businesses with intelligent cash flow forecasting and invoice management solutions.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                    <ul class="text-gray-400">
+                        <li><a href="index.html" class="hover:text-white">Home</a></li>
+                        <li><a href="login.html" class="hover:text-white">Login</a></li>
+                        <li><a href="invoices.html" class="hover:text-white">Invoices</a></li>
+                        <!-- <li><a href="forecast.html" class="hover:text-white">Forecast</a></li> -->
+                        <li><a href="clients.html" class="hover:text-white">Clients</a></li>
+                        <li><a href="settings.html" class="hover:text-white">Settings</a></li>
+                        
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Contact Us</h4>
+                    <p class="text-gray-400">
+                        Email: support@cashflowpro.com<br>
+                        Phone: +1 234 567 890
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('createInvoiceBtn').addEventListener('click', function() {
+            alert('Create New Invoice functionality coming soon!');
+        });
+
+        document.getElementById('addClientBtn').addEventListener('click', function() {
+            alert('Add New Client functionality coming soon!');
+        });
+
+        document.getElementById('generateReportBtn').addEventListener('click', function() {
+            alert('Generate Report functionality coming soon!');
+        });
+    </script>
+</body>
+</html>
