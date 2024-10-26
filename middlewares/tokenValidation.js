@@ -18,7 +18,7 @@ const tokenValidation = async (req, res, next) => {
     }
 
     const payload = jwt.verify(token, JWT_KEY);
-    if (!payload) {
+    if (!payload || !payload.userId) {
       res.status(401).send("user not authorized");
     }
 

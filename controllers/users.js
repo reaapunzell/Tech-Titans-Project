@@ -26,14 +26,18 @@ router.post('/register', async (req, res)=>{
 
 router.post("/login" ,  async (req, res)=>{
     try{
-        const { username, password} = req.body
+        const { username, password} = req.body;
+        console.log(`attempting to log in user: ${username}`);
         const user = await User.findOne({ username})
+
         if (!user){
-            res.send("unknown username")
+            console.log("Unknown username");
+            return res.status(401).json({ message: 'Unknown username' });
         }else{
             const verified = await bcrypt.compare(password, user.password)
             if (!verified){
-                res.send("incorrect password")
+                console.log("Incorrect password");
+            return res.status(401).json({ message: 'Incorrect password' });
             } else {
                 
                 const token = jwt.sign({userId: user._id}, JWT_KEY, {

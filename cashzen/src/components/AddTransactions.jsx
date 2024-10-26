@@ -9,6 +9,7 @@ function AddTransaction() {
   });
 
   const [transactions, setTransactions] = useState([]);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -17,24 +18,46 @@ function AddTransaction() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
+
+    if (!token) {
+      setError("User not authenticated.");
+      return;
+    }
+ 
+    console.log("form data: ", form);
     try {
       await api.post("/transactions", form, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Transaction added successfully!");
+      setForm({ amount: "", description: "", category: "income" });
       fetchTransactions();
     } catch (err) {
       console.error("Error adding transaction:", err);
-    }
+      if (err.response) {
+         console.error("Response data:", err.response.data);
+         console.error("Status code:", err.response.status);
+         console.error("Headers:", err.response.headers);
+         setError(err.response.data.message || "Failed to add transaction.");
+      } else {
+         setError("Failed to add transaction. Please try again.");
+      }
+   }
   };
 
-  // Fetch transactions on component mount
+
   useEffect(() => {
     fetchTransactions();
   }, []);
 
   const fetchTransactions = async () => {
     const token = localStorage.getItem("token");
+
+    if (!token) {
+      setError("User not authenticated.");
+      return;
+    }
+
     try {
       const response = await api.get("/transactions", {
         headers: { Authorization: `Bearer ${token}` },

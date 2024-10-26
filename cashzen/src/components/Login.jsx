@@ -1,10 +1,12 @@
 // client/src/Login.js
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../api";
 
 function Login() {
   const [form, setForm] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -16,19 +18,23 @@ function Login() {
 
     try {
       const response = await api.post("/auth/login", form);
-      localStorage.setItem("token", response.data.token); // Store JWT token for later requests
-      if (response.status === 200){
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
         alert("Login successful!");
+        console.log(
+          `user ${response.data.user.username} successfully logged in`
+        );
         setForm({ username: "", password: "" });
+
+        navigate("/add-transaction");
       }
-      
     } catch (err) {
-      console.error("Error logging in:", err);
-      if (err.response) {
-        setError(err.response.data || "login failed. Please try again");
+      if (err.response && err.response.status === 401) {
+        setError("Invalid username or pasword");
       } else {
-        setError("Login failed. ");
+        setError("login failed. Please try again");
       }
+      console.error("Error logging in:", err);
     }
   };
 
