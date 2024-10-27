@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "cashzen/vite.config.js",
+        "src": "cashzen/package.json",
         "use": "@vercel/static-build",
         "config": {
           "distDir": "cashzen/dist"
