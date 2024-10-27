@@ -40,3 +40,39 @@
 .read-the-docs {
   color: #888;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.transaction-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 600px; /* Set a max-width for the charts */
+  margin: 20px auto; /* Center the chart container */
+}
+
+.error-message {
+  color: red;
+}
+
+
+/* Optional: Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .transaction-wrapper {
+    flex-direction: column; /* Stack items on smaller screens */
+  }
+
+  .transaction-list,
+  .chart-container {
+    flex: 1 1 100%; /* Take full width on small screens */
+  }
+}
