@@ -1,21 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CASHZEN</title>
-    <link rel="stylesheet" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME TO CASHZEN</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/0834a3ab27.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
 </head>
 <body>
+
+    <section id="home-screen">  
+        <div class="container">
+            <h1>CASHZEN</h1>
+            <p>Are you a small business owner? Then you've landed on the right page!
+                Welcome to CASHZEN! An app that helps you track your income ,expenses AND SO MANY MORE!
+                <i class="fas fa-money-bill-wave money-icon" id="money-icon"></i></p>
+            </p>
+            <p>To get started, please enter your details and help us help you with managing your finances.</p>
+            <div class="form-container">
+                <form id="signupForm">
+                    <div class="input-container">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="signupUsername" placeholder="Username" required>
+                    </div>
+                    <div class="input-container">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="signupEmail" placeholder="Email" required>
+                    </div>
+                    <div  class="input-container">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="signupPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit"><i class="fas fa-user-plus"></i>Sign Up</button>
+                </form>
+            </div>
+            <div class="form-container">
+                <form id="loginForm">
+                    <div class="input-container">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                    </div>
+                    <div class="input-container">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit"><i class="fas fa-sign-i-alt"></i>Login</button>
+                    <div class="forgot-password">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
     
-    <div id="root"></div>
-    <p>Are you a small business owner that is seeking financial inclusion in South Africa? Then you landed at the right place.
-        WELCOME TO CASHZEN! An app that ensures to help you track your income , expenses And SO MANY MORE!</p>
-    <p>To get started , please enter your details below in order to help us help you manage your finances.Thank you for choosing us. </p>
+    <script src="script.js"></script>
 </body>
 </html>
-
