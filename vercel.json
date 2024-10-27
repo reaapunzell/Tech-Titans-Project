@@ -1,0 +1,25 @@
+{
+    "builds": [
+      {
+        "src": "cashzen/package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "cashzen/dist" 
+      },
+      {
+        "src": "index.js", 
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "index.js" 
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/cashzen/dist/index.html" 
+      }
+    ]
+  }
+  
