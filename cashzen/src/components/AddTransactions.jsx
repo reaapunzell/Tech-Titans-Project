@@ -6,6 +6,7 @@ function AddTransaction() {
     amount: "",
     description: "",
     category: "income",
+
   });
 
   const [transactions, setTransactions] = useState([]);
@@ -25,8 +26,10 @@ function AddTransaction() {
     }
  
     console.log("form data: ", form);
+
+    
     try {
-      await api.post("/transactions", form, {
+      await api.post(`/transactions/`, form, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Transaction added successfully!");
@@ -53,16 +56,19 @@ function AddTransaction() {
   const fetchTransactions = async () => {
     const token = localStorage.getItem("token");
 
+    const userId = response.data._id
+
     if (!token) {
       setError("User not authenticated.");
       return;
     }
 
     try {
-      const response = await api.get("/transactions", {
+      const response = await api.get(`/transactions/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTransactions(response.data);
+      console.log('updated transactions:' , transactions);
     } catch (err) {
       console.error("error fetching transactions", err);
     }
@@ -75,6 +81,7 @@ function AddTransaction() {
           type="number"
           name="amount"
           placeholder="Amount"
+          value={form.amount}
           onChange={handleChange}
           required
         />
@@ -82,10 +89,11 @@ function AddTransaction() {
           type="text"
           name="description"
           placeholder="Description"
+          value={form.description}
           onChange={handleChange}
           required
         />
-        <select name="category" onChange={handleChange}>
+        <select name="category" value={form.category} onChange={handleChange}>
           <option value="income">Income</option>
           <option value="expense">Expense</option>
         </select>
@@ -95,7 +103,7 @@ function AddTransaction() {
       <h3>Your Transactions</h3>
       <ul>
         {transactions.map((transaction) => (
-          <li key={transaction._id}>
+          <li >
             <strong>Amount:</strong> {transaction.amount} |{" "}
             <strong>Description:</strong> {transaction.description} |{" "}
             <strong>Category:</strong> {transaction.category}

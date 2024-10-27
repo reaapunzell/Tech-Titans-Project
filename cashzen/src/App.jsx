@@ -14,7 +14,7 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/add-transaction" element={<AddTransaction />} />
-                    <Route path="/transactions" element={<TransactionList />} />
+                    <Route path="/transactions/:userId" element={<TransactionList />} />
                 </Routes>
             </div>
         </Router>

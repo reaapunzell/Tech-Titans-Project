@@ -18,15 +18,18 @@ function Login() {
 
     try {
       const response = await api.post("/auth/login", form);
+      const userId = response.data._id
+      
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("userId", response.data.user._id);
         alert("Login successful!");
         console.log(
           `user ${response.data.user.username} successfully logged in`
         );
         setForm({ username: "", password: "" });
 
-        navigate("/add-transaction");
+        navigate(`/transactions/${userId}`);
       }
     } catch (err) {
       if (err.response && err.response.status === 401) {
