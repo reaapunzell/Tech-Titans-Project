@@ -10,6 +10,12 @@ function App() {
         <Router>
             <div>
                 <h1>Cashzen</h1>
+                <nav>
+                    <Link to="/register">Register</Link>
+                    <Link to="/login">Login</Link>
+                    <Link to="/add-transaction">Add Transaction</Link>
+                    <Link to="/transactions/:userId">Transactions</Link>
+                </nav>
                 <Routes>
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
