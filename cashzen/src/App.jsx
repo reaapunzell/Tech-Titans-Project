@@ -4,6 +4,8 @@ import Register from './components/Register';
 import Login from './components/Login';
 import AddTransaction from './components/AddTransactions';
 import TransactionList from './components/TransactionList';
+import { Link } from 'react-router-dom';
+
 
 function App() {
     return (
