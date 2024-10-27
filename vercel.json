@@ -1,24 +1,26 @@
 {
+    "version": 2,
     "builds": [
       {
-        "src": "cashzen/package.json",
+        "src": "cashzen/vite.config.js",
         "use": "@vercel/static-build",
         "config": {
-          "distDir": "cashzen/dist" 
+          "distDir": "cashzen/dist"
+        }
       },
       {
-        "src": "index.js", 
+        "src": "backend/index.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
         "src": "/api/(.*)",
-        "dest": "index.js" 
+        "dest": "backend/index.js"
       },
       {
         "src": "/(.*)",
-        "dest": "/cashzen/dist/index.html" 
+        "dest": "cashzen/dist/index.html"
       }
     ]
   }
